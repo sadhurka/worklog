@@ -24,9 +24,17 @@ function validate(data: WorkEntryFormData): FormErrors {
   if (!data.workType) errors.workType = 'Work type is required';
   else if (data.workType.length < 2) errors.workType = 'Must be at least 2 characters';
 
-  if (!data.volume) errors.volume = 'Volume is required';
-  else if (isNaN(parseFloat(data.volume)) || parseFloat(data.volume) <= 0)
+
+if (!data.volume) {
+  errors.volume = 'Volume is required';
+} else {
+  const parsedVolume = parseFloat(data.volume);
+  if (isNaN(parsedVolume) || parsedVolume <= 0) {
     errors.volume = 'Must be greater than 0';
+  } else if (!/^\d+(\.\d{1,2})?$/.test(data.volume)) {
+    errors.volume = 'Volume must have up to 2 decimal places';
+  }
+}
 
   if (!data.unit) errors.unit = 'Unit is required';
 
