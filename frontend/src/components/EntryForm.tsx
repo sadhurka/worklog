@@ -90,7 +90,7 @@ export default function EntryForm({ onSuccess, onCancel, editEntry }: Props) {
     <div className="modal-overlay">
       <div className="modal">
         <div className="modal-header">
-          <h2>{editEntry ? 'Edit Entry' : 'Add New Entry'}</h2>
+          <h2>{editEntry ? 'Edit Entry' : 'Add Entry'}</h2>
           <button className="close-btn" onClick={onCancel} type="button">✕</button>
         </div>
 
@@ -194,7 +194,7 @@ export default function EntryForm({ onSuccess, onCancel, editEntry }: Props) {
               Cancel
             </button>
             <button type="submit" className="btn-primary" disabled={submitting}>
-              {submitting ? 'Saving…' : editEntry ? 'Update Entry' : 'Add Entry'}
+              {submitting ? 'Saving…' : editEntry ? 'Update Entry' : 'Save Entry'}
             </button>
           </div>
         </form>
