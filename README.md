@@ -2,7 +2,6 @@
 
 A full-stack web application for foremen to track daily construction site work — log what was done, by whom, how much, and when.
 
----
 
 ## Stack
 
@@ -78,6 +77,30 @@ npm run dev
 > In local dev mode the Vite dev server proxies `/api` to `http://localhost:4000`.
 
 ---
+
+---
+
+## Environment
+
+- Copy ` .env.sample ` to ` .env ` at the repository root and fill in real credentials. Do not commit ` .env `.
+
+- Notes:
+  - The repo's `docker-compose.yml` reads variables from the repo-root ` .env ` automatically when you use `docker-compose up`.
+  - The backend loads environment variables via `dotenv` in local development, so running `npm run dev` inside `backend/` will pick up ` .env ` values.
+  - The frontend uses the Vite dev proxy by default (no frontend env required). If you prefer a direct API base, create `frontend/.env.local` with:
+
+    ```env
+    VITE_API_BASE=http://localhost:4000
+    ```
+
+- Create your local `.env` from the sample:
+
+```bash
+cp .env.sample .env
+# edit .env and replace CHANGEME values with real credentials
+```
+
+- Security: ` .env ` is listed in `.gitignore` and should never be committed. If you accidentally pushed secrets, rotate them immediately and remove the file from git history.
 
 ## API Endpoints
 
