@@ -81,17 +81,22 @@ npm run dev
 
 ## Environment
 
-- Copy `.env.sample` to `.env` at the repository root and fill in real credentials. Do not commit `.env`.
+- Copy `.env.sample` to `.env` at the repository root and fill in real credentials.
+
+- Example `.env.sample` (safe placeholders):
+
+```env
+MYSQL_ROOT_PASSWORD=CHANGEME
+MYSQL_DATABASE=worklog_db
+MYSQL_USER=worklog_user
+MYSQL_PASSWORD=CHANGEME
+PORT=4000
+```
 
 - Notes:
   - The repo's `docker-compose.yml` reads variables from the repo-root `.env` automatically when you use `docker-compose up`.
   - The backend loads environment variables via `dotenv` in local development, so running `npm run dev` inside `backend/` will pick up `.env` values.
-  - The frontend uses the Vite dev proxy by default (no frontend env required). If you prefer a direct API base, create `frontend/.env.local` with:
-
-    ```env
-    VITE_API_BASE=http://localhost:4000
-    ```
-
+ 
 - Create your local `.env` from the sample:
 
 ```bash
