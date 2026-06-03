@@ -6,15 +6,15 @@ A full-stack web application for foremen to track daily construction site work â
 
 ## Stack
 
-| Layer      | Technology         | Why                                                                                     |
-| ---------- | ------------------ | --------------------------------------------------------------------------------------- |
-| Frontend   | React 18 + TypeScript + Vite | Type-safe UI with fast HMR dev experience. Vite for instant builds.         |
-| Backend    | Node.js + Express + TypeScript | Lightweight, no-overhead REST API. Easy to read and extend.              |
-| Database   | MySQL 8.0          | Relational data fits work entries well. Mature, widely supported, great with Docker.    |
-| DB driver  | mysql2             | Fast, promise-based, no ORM overhead for a simple CRUD app.                            |
-| Validation | express-validator  | Declarative per-field validation on the API layer.                                     |
-| Styling    | Vanilla CSS        | Zero dependencies, full control, industrial/dark aesthetic.                            |
-| Container  | Docker + docker-compose | One-command startup, isolated services, persistent MySQL volume.                  |
+| Layer      | Technology                     | Why                                                                                  |
+| ---------- | ------------------------------ | ------------------------------------------------------------------------------------ |
+| Frontend   | React 18 + TypeScript + Vite   | Type-safe UI with fast HMR dev experience. Vite for instant builds.                  |
+| Backend    | Node.js + Express + TypeScript | Lightweight, no-overhead REST API. Easy to read and extend.                          |
+| Database   | MySQL 8.0                      | Relational data fits work entries well. Mature, widely supported, great with Docker. |
+| DB driver  | mysql2                         | Fast, promise-based, no ORM overhead for a simple CRUD app.                          |
+| Validation | express-validator              | Declarative per-field validation on the API layer.                                   |
+| Styling    | Vanilla CSS                    | Zero dependencies, full control, industrial/dark aesthetic.                          |
+| Container  | Docker + docker-compose        | One-command startup, isolated services, persistent MySQL volume.                     |
 
 ---
 
@@ -75,20 +75,20 @@ npm run dev
 # Runs on http://localhost:5173
 ```
 
-> In local dev mode the Vite dev server proxies `/api` to `http://backend:4000` â€” update `vite.config.ts` target to `http://localhost:4000` for local use.
+> In local dev mode the Vite dev server proxies `/api` to `http://localhost:4000`.
 
 ---
 
 ## API Endpoints
 
-| Method   | Path                      | Description                                 |
-| -------- | ------------------------- | ------------------------------------------- |
-| `GET`    | `/api/work-entries`       | List all entries. Supports `?from=&to=&sort=` |
-| `POST`   | `/api/work-entries`       | Create a new entry                          |
-| `PUT`    | `/api/work-entries/:id`   | Update an existing entry                    |
-| `DELETE` | `/api/work-entries/:id`   | Delete an entry                             |
-| `GET`    | `/api/work-types`         | List all work types                         |
-| `GET`    | `/api/health`             | Health check                                |
+| Method   | Path                    | Description                                   |
+| -------- | ----------------------- | --------------------------------------------- |
+| `GET`    | `/api/work-entries`     | List all entries. Supports `?from=&to=&sort=` |
+| `POST`   | `/api/work-entries`     | Create a new entry                            |
+| `PUT`    | `/api/work-entries/:id` | Update an existing entry                      |
+| `DELETE` | `/api/work-entries/:id` | Delete an entry                               |
+| `GET`    | `/api/work-types`       | List all work types                           |
+| `GET`    | `/api/health`           | Health check                                  |
 
 ---
 
@@ -116,12 +116,12 @@ CREATE TABLE work_entries (
 
 ## Form Validation Rules
 
-| Field     | Rule                                          |
-| --------- | --------------------------------------------- |
-| Date      | Required. Cannot be in the future.            |
-| Work type | Required. Min 2 characters.                   |
-| Volume    | Required. Must be > 0. Up to 2 decimals.      |
-| Unit      | Required.                                     |
-| Performer | Required. Min 3 characters.                   |
+| Field     | Rule                                     |
+| --------- | ---------------------------------------- |
+| Date      | Required. Cannot be in the future.       |
+| Work type | Required. Min 2 characters.              |
+| Volume    | Required. Must be > 0. Up to 2 decimals. |
+| Unit      | Required.                                |
+| Performer | Required. Min 3 characters.              |
 
 Validation runs on both the frontend (instant feedback) and the backend (API-level guarantee).
